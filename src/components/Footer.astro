@@ -9,14 +9,43 @@
         <a href="#" class="footer-logo">
           <div class="footer-logo-icon">
             <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
-              <rect width="32" height="32" rx="8" fill="#c8a45c"/>
-              <path d="M8 22V10l8 6 8-6v12" stroke="#0f2a3d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              <defs>
+                <linearGradient
+                  id="footerLogoGrandient"
+                  x1="0%"
+                  y1="0%"
+                  x2="100%"
+                  y2="100%"
+                >
+                  <stop offset="0%" style="stop-color:#f7e8c3;stop-opacity:1"
+                  ></stop>
+                  <stop offset="45%" style="stop-color:#d4af37;stop-opacity:1"
+                  ></stop>
+                  <stop offset="100%" style="stop-color:#aa8928;stop-opacity:1"
+                  ></stop>
+                </linearGradient>
+              </defs>
+              <rect
+                width="32"
+                height="32"
+                rx="8"
+                fill="url(#footerLogoGrandient)"></rect>
+              <path
+                d="M8 22V10l8 6 8-6v12"
+                stroke="#0f2a3d"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                fill="none"></path>
             </svg>
           </div>
-          <span class="footer-logo-text">Meret <span class="footer-logo-accent">Health</span></span>
+          <span class="footer-logo-text"
+            >Meret <span class="footer-logo-accent">Health</span>
+          </span>
         </a>
         <p class="footer-tagline">
-          Hệ sinh thái chăm sóc sức khỏe cá thể hóa dựa trên dữ liệu và AI tại Việt Nam.
+          Hệ sinh thái chăm sóc sức khỏe cá thể hóa dựa trên dữ liệu và AI tại
+          Việt Nam.
         </p>
       </div>
 
@@ -46,15 +75,35 @@
         <h4 class="footer-col-title">LIÊN HỆ</h4>
         <ul class="footer-contact">
           <li>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
               <circle cx="12" cy="10" r="3"></circle>
             </svg>
-            <span>Hà Nội, Việt Nam</span>
+            <span>TPHCM, Việt Nam</span>
           </li>
           <li>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+              ></path>
               <polyline points="22,6 12,13 2,6"></polyline>
             </svg>
             <a href="mailto:info@merethealth.vn">info@merethealth.vn</a>
@@ -65,7 +114,9 @@
 
     <!-- Bottom bar -->
     <div class="footer-bottom">
-      <span class="footer-copyright">© 2025 Meret Health. All rights reserved.</span>
+      <span class="footer-copyright"
+        >© 2025 Meret Health. All rights reserved.</span
+      >
       <span class="footer-motto">Data · AI · Care</span>
     </div>
   </div>

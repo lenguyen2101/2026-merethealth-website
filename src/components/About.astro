@@ -55,11 +55,11 @@
         </div>
         <h3 class="about-card-title">Giá trị cốt lõi</h3>
         <div class="about-tags">
-          <span class="tag tag-teal">Chính xác</span>
+          <span class="tag tag-blue">Chính xác</span>
           <span class="tag tag-gold">Cá thể</span>
           <span class="tag tag-green">Dự phòng</span>
-          <span class="tag tag-rose">Kết nối</span>
-          <span class="tag tag-teal">Nhân văn</span>
+          <span class="tag tag-purple">Kết nối</span>
+          <span class="tag tag-red">Nhân văn</span>
         </div>
       </div>
     </div>
@@ -69,78 +69,170 @@
 <style>
   .about {
     padding: var(--section-padding) 0;
-    background: var(--light-bg);
+    background: linear-gradient(to bottom, #f8fafc, #f1f5f9);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Decorative soft blobs for background elegance */
+  .about::before {
+    content: '';
+    position: absolute;
+    top: -10%;
+    right: -5%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.03) 0%, transparent 70%);
+    pointer-events: none;
   }
 
   .about-header {
-    margin-bottom: 56px;
+    margin-bottom: 64px;
   }
 
   .about-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+    gap: 32px;
   }
 
   .about-card {
-    padding: 36px 30px;
+    background: var(--white);
+    padding: 48px 36px;
+    border: none; /* Removed border */
+    box-shadow: 0 10px 30px -10px rgba(15, 42, 61, 0.08); /* Softer, deep shadow */
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    border-radius: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
   }
+
+  .about-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px -10px rgba(15, 42, 61, 0.12);
+  }
+
+  /* Refined Icon Badges with Gradients */
+  .icon-badge {
+    margin-bottom: 28px;
+    width: 52px;
+    height: 52px;
+    background: var(--white);
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    border: none;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .icon-badge::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.12;
+  }
+
+  .icon-badge-teal svg { color: #2d6a7a; }
+  .icon-badge-teal::after { background: linear-gradient(135deg, #3a8595, #2d6a7a); }
+
+  .icon-badge-gold svg { color: #d4af37; }
+  .icon-badge-gold::after { background: var(--gold-gradient); }
+
+  .icon-badge-green svg { color: #10b981; }
+  .icon-badge-green::after { background: linear-gradient(135deg, #34d399, #10b981); }
 
   .about-card-title {
     font-family: var(--font-heading);
-    font-size: 1.35rem;
+    font-size: 1.5rem;
     font-weight: 600;
-    color: var(--text-heading);
-    margin-bottom: 16px;
+    color: var(--navy-darkest);
+    margin-bottom: 20px;
+    letter-spacing: -0.01em;
   }
 
   .about-card-text {
-    font-size: 0.95rem;
-    line-height: 1.75;
-    color: var(--text-body);
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #475569; /* Slate 600 for better readability */
   }
 
   .about-card-text strong {
-    color: var(--text-heading);
-    font-style: italic;
+    color: var(--navy-dark);
+    font-weight: 600;
   }
 
   .about-list {
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 16px;
   }
 
   .about-list li {
     position: relative;
-    padding-left: 20px;
+    padding-left: 24px;
     font-size: 0.95rem;
-    line-height: 1.65;
-    color: var(--text-body);
+    line-height: 1.7;
+    color: #475569;
   }
 
   .about-list li::before {
     content: '';
     position: absolute;
     left: 0;
-    top: 9px;
+    top: 10px;
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: var(--gold);
+    background: var(--gold-gradient);
+    box-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
   }
 
   .about-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 4px;
+    gap: 12px;
+    margin-top: 8px;
+  }
+
+  /* Refined Borderless Multi-color Tags */
+  .tag {
+    border: none !important;
+    padding: 8px 18px;
+    border-radius: 100px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .tag.tag-blue { background: #ecf8ff; color: #2d6a7a; }
+  .tag.tag-gold { background: #fff9ea; color: #947119; }
+  .tag.tag-green { background: #effaf3; color: #2d7a4d; }
+  .tag.tag-purple { background: #f6f2ff; color: #6d4fa1; }
+  .tag.tag-red { background: #fff1f1; color: #b73a3a; }
+
+  .tag:hover {
+    transform: translateY(-2px) scale(1.05);
+    background: white;
+    filter: brightness(1.1);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  }
+
+  @media (max-width: 1024px) {
+    .about-grid {
+      gap: 20px;
+    }
+    .about-card {
+      padding: 36px 24px;
+    }
   }
 
   @media (max-width: 768px) {
     .about-grid {
       grid-template-columns: 1fr;
-      gap: 16px;
+      gap: 20px;
     }
   }
 </style>

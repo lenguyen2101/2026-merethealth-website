@@ -108,56 +108,91 @@
   }
 
   .diag-card {
-    padding: 32px 24px;
+    padding: 36px 28px;
+    border: 1px solid rgba(255, 255, 255, 0.05); /* Very subtle border */
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(10px);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .diag-card-title {
-    font-family: var(--font-heading);
-    font-size: 1.15rem;
-    font-weight: 600;
-    color: var(--white);
-    margin-bottom: 14px;
+  .diag-card:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(212, 175, 55, 0.3);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
   }
 
-  .diag-card-text {
-    font-size: 0.9rem;
-    line-height: 1.7;
-    color: var(--text-light);
+  .diag-card:hover .icon-badge {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
   }
 
+  /* Premium CTA Banner redesign */
   .diag-cta-banner {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: var(--gold);
-    border-radius: var(--radius-lg);
-    padding: 28px 36px;
+    background: var(--gold-gradient);
+    border-radius: 20px;
+    padding: 32px 48px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Shimmer sweep animation for the banner */
+  .diag-cta-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+      90deg, 
+      transparent, 
+      rgba(255, 255, 255, 0.3), 
+      transparent
+    );
+    transform: skewX(-25deg);
+    animation: banner-shimmer 6s infinite ease-in-out;
+  }
+
+  @keyframes banner-shimmer {
+    0% { left: -100%; }
+    30%, 100% { left: 150%; }
   }
 
   .diag-cta-title {
     font-family: var(--font-heading);
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     font-weight: 700;
-    color: var(--navy-dark);
-    margin-bottom: 4px;
+    color: var(--navy-darkest);
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
   }
 
   .diag-cta-list {
-    font-size: 0.9rem;
-    color: var(--navy);
-    opacity: 0.85;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--navy-darkest);
+    opacity: 0.75;
   }
 
   .diag-cta-btn {
     flex-shrink: 0;
-    background: var(--white);
+    background: var(--navy-darkest);
+    color: var(--white) !important;
+    border: none;
     font-weight: 600;
+    padding: 14px 32px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   }
 
   .diag-cta-btn:hover {
-    background: var(--navy-dark);
-    color: var(--white) !important;
-    border-color: var(--navy-dark) !important;
+    background: var(--navy);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
   }
 
   @media (max-width: 1024px) {

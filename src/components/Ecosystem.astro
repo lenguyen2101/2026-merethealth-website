@@ -26,11 +26,23 @@
         <span class="eco-hub-sub">Bộ não dữ liệu</span>
       </div>
 
-      <!-- Connection lines (visual only) -->
-      <div class="eco-connections">
-        <div class="eco-line eco-line-1"></div>
-        <div class="eco-line eco-line-2"></div>
-        <div class="eco-line eco-line-3"></div>
+      <!-- Animated Dashed Connection Lines -->
+      <div class="eco-animations">
+        <svg width="100%" height="60" viewBox="0 0 800 60" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Left line -->
+          <path d="M400 0C400 30 135 30 135 60" stroke="url(#lineGradient)" stroke-width="2" stroke-linecap="round" class="eco-path-line animated-dashed" />
+          <!-- Center line -->
+          <path d="M400 0V60" stroke="url(#lineGradient)" stroke-width="2" stroke-linecap="round" class="eco-path-line animated-dashed" />
+          <!-- Right line -->
+          <path d="M400 0C400 30 665 30 665 60" stroke="url(#lineGradient)" stroke-width="2" stroke-linecap="round" class="eco-path-line animated-dashed" />
+          
+          <defs>
+            <linearGradient id="lineGradient" x1="400" y1="0" x2="400" y2="60" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#1a3a50" stop-opacity="0.8" />
+              <stop offset="1" stop-color="#2d6a7a" stop-opacity="0.5" />
+            </linearGradient>
+          </defs>
+        </svg>
       </div>
 
       <!-- Sub nodes -->
@@ -38,8 +50,11 @@
         <div class="eco-node">
           <div class="eco-node-icon">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M14.5 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V7.5L14.5 2z"></path>
-              <polyline points="14 2 14 8 20 8"></polyline>
+              <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"></path>
+              <path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"></path>
+              <path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"></path>
+              <path d="M10 6h4"></path>
+              <path d="M10 10h4"></path>
             </svg>
           </div>
           <h4 class="eco-node-title">Phòng khám Đa khoa</h4>
@@ -69,10 +84,8 @@
           <h4 class="eco-node-title">Nền tảng số</h4>
           <p class="eco-node-desc">Bệnh nhân, gia đình, bác sĩ kết nối liền mạch</p>
         </div>
-      </div>
 
-      <!-- Partner node -->
-      <div class="eco-partner">
+        <!-- Partner node -->
         <div class="eco-node eco-node-partner">
           <div class="eco-node-icon">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -146,20 +159,27 @@
     color: var(--text-light);
   }
 
-  /* Connection lines */
-  .eco-connections {
-    display: flex;
-    justify-content: center;
-    gap: 120px;
-    height: 32px;
-    position: relative;
+  /* Animated Connections */
+  .eco-animations {
+    width: 100%;
+    height: 60px;
+    margin: -10px 0;
+    z-index: 1;
+    pointer-events: none;
   }
 
-  .eco-line {
-    width: 2px;
-    height: 100%;
-    background: linear-gradient(to bottom, var(--navy), var(--teal));
+  .eco-path-line {
     opacity: 0.3;
+  }
+
+  .animated-dashed {
+    stroke-dasharray: 8 8;
+    animation: flow 20s linear infinite;
+  }
+
+  @keyframes flow {
+    from { stroke-dashoffset: 200; }
+    to { stroke-dashoffset: 0; }
   }
 
   /* Sub nodes */
@@ -210,18 +230,15 @@
   }
 
   /* Partner node */
-  .eco-partner {
-    max-width: 280px;
-    width: 100%;
-  }
-
   .eco-node-partner {
     border-style: dashed;
     border-color: var(--text-muted);
+    grid-column: 1; /* Under PKĐK */
   }
 
   .eco-node-partner:hover {
     border-color: var(--gold);
+    background: rgba(212, 175, 55, 0.05);
   }
 
   @media (max-width: 768px) {

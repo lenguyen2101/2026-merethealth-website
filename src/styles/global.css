@@ -15,10 +15,12 @@
   --teal: #2d6a7a;
   --teal-light: #3a8595;
   
-  --gold: #c8a45c;
-  --gold-light: #d4b36e;
-  --gold-hover: #dabb78;
-  --gold-subtle: rgba(200, 164, 92, 0.15);
+  --gold-light: #f7e8c3;
+  --gold: #d4af37;
+  --gold-dark: #aa8928;
+  --gold-gradient: linear-gradient(135deg, #f7e8c3 0%, #d4af37 45%, #aa8928 100%);
+  --gold-hover-gradient: linear-gradient(135deg, #ffffff 0%, #f7e8c3 20%, #d4af37 60%, #aa8928 100%);
+  --gold-subtle: rgba(212, 175, 55, 0.12);
   
   --cream: #f5f0e8;
   --light-bg: #f0f3f7;
@@ -179,15 +181,48 @@ ul, ol {
 }
 
 .btn-gold {
-  background: var(--gold);
-  color: var(--navy-dark);
-  font-weight: 600;
+  position: relative;
+  overflow: hidden;
+  background: var(--gold-gradient);
+  color: var(--navy-darkest);
+  font-weight: 700;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 
+    0 4px 15px rgba(170, 137, 40, 0.25),
+    inset 0 1px 1px rgba(255, 255, 255, 0.5);
+  text-shadow: 0 0.5px 0 rgba(255, 255, 255, 0.3);
+}
+
+.btn-gold::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0) 40%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0) 60%,
+    transparent 100%
+  );
+  transform: rotate(25deg) translateY(-100%);
+  transition: all 0.6s ease;
+  pointer-events: none;
+}
+
+.btn-gold:hover::before {
+  transform: rotate(25deg) translateY(100%);
 }
 
 .btn-gold:hover {
-  background: var(--gold-hover);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 16px rgba(200, 164, 92, 0.35);
+  background: var(--gold-hover-gradient);
+  transform: translateY(-2px);
+  box-shadow: 
+    0 8px 25px rgba(170, 137, 40, 0.4),
+    inset 0 1px 2px rgba(255, 255, 255, 0.6);
 }
 
 .btn-outline-white {

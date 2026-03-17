@@ -15,12 +15,15 @@
       <!-- Meret General Clinic -->
       <div class="card clinic-card">
         <div class="clinic-card-header">
-          <div class="icon-badge icon-badge-navy">
+          <div class="icon-badge" style="background: #f0f9ff; color: #0369a1;">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M14.5 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V7.5L14.5 2z"></path>
-              <polyline points="14 2 14 8 20 8"></polyline>
-              <line x1="16" y1="13" x2="8" y2="13"></line>
-              <line x1="16" y1="17" x2="8" y2="17"></line>
+              <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"></path>
+              <path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"></path>
+              <path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"></path>
+              <path d="M10 6h4"></path>
+              <path d="M10 10h4"></path>
+              <path d="M10 14h4"></path>
+              <path d="M10 18h4"></path>
             </svg>
           </div>
           <div>
@@ -139,7 +142,27 @@
   .clinic-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 10px;
+    margin-top: 4px;
+  }
+
+  /* Border-less Light Blue Gradient Tags */
+  .clinic-tags .tag {
+    border: none !important;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    color: #0369a1;
+    padding: 8px 18px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    box-shadow: 0 2px 8px rgba(3, 105, 161, 0.05);
+    transition: all 0.3s ease;
+  }
+
+  .clinic-tags .tag:hover {
+    transform: translateY(-2px);
+    background: white;
+    box-shadow: 0 4px 12px rgba(3, 105, 161, 0.1);
+    color: #0c4a6e;
   }
 
   .clinic-note {
