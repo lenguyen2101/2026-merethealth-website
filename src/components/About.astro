@@ -1,0 +1,146 @@
+---
+---
+
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-header text-center">
+      <div class="section-label mx-auto" style="justify-content: center;">VỀ CHÚNG TÔI</div>
+      <h2 class="section-heading">Meret Health là gì?</h2>
+      <p class="section-subheading mx-auto text-center">
+        Mô hình chăm sóc sức khỏe thế hệ mới, nơi dữ liệu cận lâm sàng được đặt ở trung tâm
+      </p>
+    </div>
+
+    <div class="about-grid">
+      <!-- Tầm nhìn -->
+      <div class="card about-card">
+        <div class="icon-badge icon-badge-teal">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+            <circle cx="12" cy="12" r="3"></circle>
+          </svg>
+        </div>
+        <h3 class="about-card-title">Tầm nhìn</h3>
+        <p class="about-card-text">
+          Trở thành hệ sinh thái y tế dựa trên dữ liệu và AI <strong>đáng tin cậy tại Việt Nam</strong>, 
+          nơi mỗi người dân đều có một hồ sơ sức khỏe cá nhân hóa, được theo dõi và bảo vệ chủ động suốt cuộc đời.
+        </p>
+      </div>
+
+      <!-- Sứ mệnh -->
+      <div class="card about-card">
+        <div class="icon-badge icon-badge-gold">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <circle cx="12" cy="12" r="6"></circle>
+            <circle cx="12" cy="12" r="2"></circle>
+          </svg>
+        </div>
+        <h3 class="about-card-title">Sứ mệnh</h3>
+        <ul class="about-list">
+          <li>Xây dựng trung tâm cận lâm sàng công nghệ cao làm "bộ não dữ liệu"</li>
+          <li>Kết nối chuỗi phòng khám đa khoa và bác sĩ gia đình</li>
+          <li>Ứng dụng AI để phát hiện sớm nguy cơ, dự phòng bệnh mạn và ung thư</li>
+        </ul>
+      </div>
+
+      <!-- Giá trị cốt lõi -->
+      <div class="card about-card">
+        <div class="icon-badge icon-badge-green">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+            <path d="M2 17l10 5 10-5"></path>
+            <path d="M2 12l10 5 10-5"></path>
+          </svg>
+        </div>
+        <h3 class="about-card-title">Giá trị cốt lõi</h3>
+        <div class="about-tags">
+          <span class="tag tag-teal">Chính xác</span>
+          <span class="tag tag-gold">Cá thể</span>
+          <span class="tag tag-green">Dự phòng</span>
+          <span class="tag tag-rose">Kết nối</span>
+          <span class="tag tag-teal">Nhân văn</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about {
+    padding: var(--section-padding) 0;
+    background: var(--light-bg);
+  }
+
+  .about-header {
+    margin-bottom: 56px;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .about-card {
+    padding: 36px 30px;
+  }
+
+  .about-card-title {
+    font-family: var(--font-heading);
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--text-heading);
+    margin-bottom: 16px;
+  }
+
+  .about-card-text {
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: var(--text-body);
+  }
+
+  .about-card-text strong {
+    color: var(--text-heading);
+    font-style: italic;
+  }
+
+  .about-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .about-list li {
+    position: relative;
+    padding-left: 20px;
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: var(--text-body);
+  }
+
+  .about-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 9px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+  }
+
+  .about-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 4px;
+  }
+
+  @media (max-width: 768px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+  }
+</style>

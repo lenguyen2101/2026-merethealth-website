@@ -1,0 +1,91 @@
+---
+---
+
+<section class="cta-section" id="cta">
+  <div class="cta-gradient-overlay"></div>
+  <div class="container cta-container">
+    <h2 class="cta-heading">
+      <em>Bắt đầu hành trình sức khỏe của bạn</em>
+    </h2>
+    <p class="cta-subtext">
+      Đặt lịch khám hoặc tìm hiểu gói tầm soát phù hợp với bạn và gia đình ngay hôm nay.
+    </p>
+    <div class="cta-actions">
+      <a href="#" class="btn btn-gold">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        Đặt lịch khám ngay
+      </a>
+      <a href="#diagnostics" class="btn btn-outline-white">
+        Xem gói tầm soát
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta-section {
+    position: relative;
+    padding: var(--section-padding) 0;
+    background: linear-gradient(155deg, var(--navy-dark) 0%, var(--navy) 50%, var(--teal) 100%);
+    overflow: hidden;
+  }
+
+  .cta-gradient-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 50%, rgba(200, 164, 92, 0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cta-container {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+  }
+
+  .cta-heading {
+    font-family: var(--font-heading);
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 20px;
+    line-height: 1.3;
+  }
+
+  .cta-heading em {
+    font-style: italic;
+  }
+
+  .cta-subtext {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    margin-bottom: 40px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cta-actions {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 480px) {
+    .cta-actions {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .cta-actions .btn {
+      width: 100%;
+      max-width: 300px;
+    }
+  }
+</style>

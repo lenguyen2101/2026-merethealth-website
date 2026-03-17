@@ -1,0 +1,240 @@
+---
+---
+
+<section class="ecosystem" id="ecosystem">
+  <div class="container">
+    <div class="ecosystem-header text-center">
+      <div class="section-label mx-auto" style="justify-content: center;">HỆ SINH THÁI</div>
+      <h2 class="section-heading">Một hệ sinh thái – Một hành trình sức khỏe</h2>
+      <p class="section-subheading mx-auto text-center">
+        Nền tảng số giúp bệnh nhân, gia đình và bác sĩ kết nối liền mạch
+      </p>
+    </div>
+
+    <div class="ecosystem-diagram">
+      <!-- Center hub -->
+      <div class="eco-hub">
+        <div class="eco-hub-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+            <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+            <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+          </svg>
+        </div>
+        <h3 class="eco-hub-title">Meret Precision</h3>
+        <span class="eco-hub-accent">Diagnostics</span>
+        <span class="eco-hub-sub">Bộ não dữ liệu</span>
+      </div>
+
+      <!-- Connection lines (visual only) -->
+      <div class="eco-connections">
+        <div class="eco-line eco-line-1"></div>
+        <div class="eco-line eco-line-2"></div>
+        <div class="eco-line eco-line-3"></div>
+      </div>
+
+      <!-- Sub nodes -->
+      <div class="eco-nodes">
+        <div class="eco-node">
+          <div class="eco-node-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14.5 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V7.5L14.5 2z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+            </svg>
+          </div>
+          <h4 class="eco-node-title">Phòng khám Đa khoa</h4>
+          <p class="eco-node-desc">Khám chữa bệnh thường ngày, kết nối dữ liệu tức thời</p>
+        </div>
+
+        <div class="eco-node">
+          <div class="eco-node-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+          </div>
+          <h4 class="eco-node-title">Bác sĩ Gia đình</h4>
+          <p class="eco-node-desc">Theo dõi sức khỏe liên tục, cá thể hóa hành trình</p>
+        </div>
+
+        <div class="eco-node">
+          <div class="eco-node-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+              <line x1="12" y1="18" x2="12.01" y2="18"></line>
+            </svg>
+          </div>
+          <h4 class="eco-node-title">Nền tảng số</h4>
+          <p class="eco-node-desc">Bệnh nhân, gia đình, bác sĩ kết nối liền mạch</p>
+        </div>
+      </div>
+
+      <!-- Partner node -->
+      <div class="eco-partner">
+        <div class="eco-node eco-node-partner">
+          <div class="eco-node-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="8.5" cy="7" r="4"></circle>
+              <line x1="20" y1="8" x2="20" y2="14"></line>
+              <line x1="23" y1="11" x2="17" y2="11"></line>
+            </svg>
+          </div>
+          <h4 class="eco-node-title">Đối tác y tế</h4>
+          <p class="eco-node-desc">Bệnh viện, phòng khám, bác sĩ chuyên khoa</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .ecosystem {
+    padding: var(--section-padding) 0;
+    background: var(--light-bg);
+  }
+
+  .ecosystem-header {
+    margin-bottom: 56px;
+  }
+
+  .ecosystem-diagram {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  /* Center Hub */
+  .eco-hub {
+    background: linear-gradient(145deg, var(--navy-dark), var(--navy));
+    border-radius: var(--radius-xl);
+    padding: 40px 60px;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(15, 42, 61, 0.3);
+    position: relative;
+  }
+
+  .eco-hub-icon {
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  .eco-hub-title {
+    font-family: var(--font-heading);
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 2px;
+  }
+
+  .eco-hub-accent {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .eco-hub-sub {
+    font-size: 0.85rem;
+    color: var(--text-light);
+  }
+
+  /* Connection lines */
+  .eco-connections {
+    display: flex;
+    justify-content: center;
+    gap: 120px;
+    height: 32px;
+    position: relative;
+  }
+
+  .eco-line {
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--navy), var(--teal));
+    opacity: 0.3;
+  }
+
+  /* Sub nodes */
+  .eco-nodes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    width: 100%;
+  }
+
+  .eco-node {
+    background: var(--white);
+    border: 1.5px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    padding: 28px 22px;
+    text-align: center;
+    transition: all var(--transition-normal);
+  }
+
+  .eco-node:hover {
+    border-color: var(--teal);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+  }
+
+  .eco-node-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    color: var(--teal);
+    margin-bottom: 12px;
+  }
+
+  .eco-node-title {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-heading);
+    margin-bottom: 8px;
+  }
+
+  .eco-node-desc {
+    font-size: 0.85rem;
+    line-height: 1.55;
+    color: var(--text-muted);
+  }
+
+  /* Partner node */
+  .eco-partner {
+    max-width: 280px;
+    width: 100%;
+  }
+
+  .eco-node-partner {
+    border-style: dashed;
+    border-color: var(--text-muted);
+  }
+
+  .eco-node-partner:hover {
+    border-color: var(--gold);
+  }
+
+  @media (max-width: 768px) {
+    .eco-nodes {
+      grid-template-columns: 1fr;
+    }
+
+    .eco-hub {
+      padding: 30px 40px;
+    }
+
+    .eco-connections {
+      display: none;
+    }
+  }
+</style>

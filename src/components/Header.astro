@@ -1,0 +1,178 @@
+---
+---
+
+<header class="header" id="header">
+  <div class="header-inner container">
+    <a href="#" class="logo">
+      <div class="logo-icon">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+          <rect width="32" height="32" rx="8" fill="#c8a45c"/>
+          <path d="M8 22V10l8 6 8-6v12" stroke="#0f2a3d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <span class="logo-text">Meret <span class="logo-accent">Health</span></span>
+    </a>
+
+    <nav class="nav" id="nav">
+      <a href="#about" class="nav-link">Về chúng tôi</a>
+      <a href="#diagnostics" class="nav-link">Diagnostics</a>
+      <a href="#clinics" class="nav-link">Phòng khám</a>
+      <a href="#ecosystem" class="nav-link">Hệ sinh thái</a>
+    </nav>
+
+    <a href="#cta" class="btn btn-gold header-cta">
+      Đặt lịch khám ngay
+    </a>
+
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.97);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-light);
+    transition: all var(--transition-normal);
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+
+  .logo-text {
+    font-family: var(--font-body);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--navy-dark);
+  }
+
+  .logo-accent {
+    color: var(--gold);
+    font-weight: 500;
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+  }
+
+  .nav-link {
+    font-size: 14.5px;
+    font-weight: 500;
+    color: var(--text-body);
+    position: relative;
+    padding: 4px 0;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gold);
+    transition: width var(--transition-normal);
+  }
+
+  .nav-link:hover {
+    color: var(--navy-dark);
+  }
+
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  .header-cta {
+    padding: 10px 22px;
+    font-size: 14px;
+    border-radius: var(--radius-md);
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    padding: 4px;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--navy-dark);
+    border-radius: 2px;
+    transition: all var(--transition-fast);
+  }
+
+  @media (max-width: 768px) {
+    .nav {
+      display: none;
+      position: absolute;
+      top: 72px;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      background: var(--white);
+      padding: 20px var(--container-padding);
+      gap: 0;
+      border-bottom: 1px solid var(--border-light);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .nav.open {
+      display: flex;
+    }
+
+    .nav-link {
+      padding: 14px 0;
+      width: 100%;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .header-cta {
+      display: none;
+    }
+
+    .hamburger {
+      display: flex;
+    }
+  }
+</style>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const nav = document.getElementById('nav');
+  
+  hamburger?.addEventListener('click', () => {
+    nav?.classList.toggle('open');
+  });
+
+  // Close nav on link click (mobile)
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      nav?.classList.remove('open');
+    });
+  });
+</script>
