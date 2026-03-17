@@ -1,0 +1,391 @@
+---
+---
+
+<div id="booking-modal" class="modal-overlay">
+  <div class="modal-container">
+    <div class="modal-header">
+      <div class="header-text">
+        <h2 class="modal-title">Đặt lịch khám</h2>
+        <p class="modal-subtitle">Vui lòng điền thông tin để được tư vấn</p>
+      </div>
+      <button id="close-modal" class="close-btn" aria-label="Đóng">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+          <line x1="6" y1="18" x2="18" y2="6"></line>
+        </svg>
+      </button>
+    </div>
+
+    <form id="booking-form" class="modal-body">
+      <div class="form-group">
+        <label for="full-name">Họ và tên *</label>
+        <input type="text" id="full-name" name="fullName" placeholder="Nguyễn Văn A" required />
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Số điện thoại *</label>
+        <input type="tel" id="phone" name="phone" placeholder="0912 345 678" required />
+      </div>
+
+      <div class="form-group">
+        <label for="service">Dịch vụ quan tâm</label>
+        <select id="service" name="service">
+          <option value="" disabled selected>-- Chọn dịch vụ --</option>
+          <option value="xet-nghiem">Xét nghiệm chuyên sâu</option>
+          <option value="chan-doan-ai">Chẩn đoán hình ảnh AI</option>
+          <option value="benh-man">Gói tầm soát bệnh mạn</option>
+          <option value="ung-thu-som">Gói tầm soát ung thư sớm</option>
+          <option value="kham-da-khoa">Khám đa khoa</option>
+          <option value="bac-si-gia-dinh">Bác sĩ gia đình</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="notes">Ghi chú</label>
+        <textarea id="notes" name="notes" placeholder="Triệu chứng hoặc yêu cầu đặc biệt..." rows="3"></textarea>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" id="cancel-modal" class="btn btn-cancel">Hủy</button>
+        <button type="submit" id="submit-booking" class="btn btn-gold btn-submit">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+          Gửi yêu cầu đặt lịch
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Success Popup -->
+<div id="success-popup" class="modal-overlay" style="z-index: 10002;">
+  <div class="success-container">
+    <div class="success-icon">
+      <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+      </svg>
+    </div>
+    <h3 class="success-title">Gửi thông tin thành công!</h3>
+    <p class="success-text">Chúng tôi sẽ liên hệ với bạn trong thời gian sớm nhất.</p>
+    <button id="close-success" class="btn btn-gold btn-submit" style="width: 100%;">Đóng</button>
+  </div>
+</div>
+
+<style>
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(9, 30, 46, 0.7);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10001; /* Higher than header (1000) */
+    padding: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+
+  .modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Body lock style */
+  :global(html.modal-open), :global(body.modal-open) {
+    overflow: hidden !important;
+  }
+
+  .modal-container, .success-container {
+    background: var(--white);
+    width: 100%;
+    max-width: 520px;
+    border-radius: 28px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    transform: translateY(20px);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .modal-overlay.active .modal-container, 
+  .modal-overlay.active .success-container {
+    transform: translateY(0);
+  }
+
+  .modal-header {
+    padding: 32px 32px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  .modal-title {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    color: var(--navy-darkest);
+    margin-bottom: 4px;
+    line-height: 1.2;
+  }
+
+  .modal-subtitle {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+  }
+
+  .close-btn {
+    padding: 8px;
+    color: var(--text-muted);
+    transition: color 0.2s;
+    background: none;
+    border: none;
+    cursor: pointer;
+    line-height: 0;
+  }
+
+  .close-btn:hover {
+    color: var(--navy-dark);
+  }
+
+  .modal-body {
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .form-group label {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--navy-darkest);
+    text-align: left;
+  }
+
+  .form-group input, 
+  .form-group select, 
+  .form-group textarea {
+    padding: 14px 20px;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: all 0.2s;
+    background: #f8fafc;
+    width: 100%;
+    color: var(--navy-darkest);
+  }
+
+  .form-group input:focus, 
+  .form-group select:focus, 
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.1);
+    background: var(--white);
+  }
+
+  .form-actions {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 16px;
+    margin-top: 10px;
+  }
+
+  .btn-submit {
+    width: 100%;
+    padding: 16px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+
+  .btn-submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .btn-cancel {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    color: var(--text-muted);
+    font-weight: 600;
+    border-radius: 14px;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 16px;
+    transition: all 0.2s;
+  }
+
+  .btn-cancel:hover {
+    background: #f1f5f9;
+    color: var(--navy-dark);
+  }
+
+  .success-container {
+    padding: 60px 40px;
+    text-align: center;
+  }
+
+  .success-icon {
+    margin-bottom: 24px;
+  }
+
+  .success-title {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    color: var(--navy-darkest);
+    margin-bottom: 12px;
+  }
+
+  .success-text {
+    color: var(--text-muted);
+    margin-bottom: 32px;
+    line-height: 1.6;
+  }
+
+  /* Use a global class on html/body for scroll lock */
+  :global(html.modal-open), :global(body.modal-open) {
+    overflow: hidden !important;
+    height: 100%;
+  }
+
+  @media (max-width: 480px) {
+    .modal-container {
+      max-width: 100%;
+      border-radius: 24px 24px 0 0;
+      position: absolute;
+      bottom: 0;
+    }
+    
+    .form-actions {
+      grid-template-columns: 1fr;
+    }
+    .btn-cancel { order: 2; }
+    .btn-submit { order: 1; }
+  }
+</style>
+
+<script>
+  const bookingModal = document.getElementById('booking-modal');
+  const successPopup = document.getElementById('success-popup');
+  const bookingForm = document.getElementById('booking-form') as HTMLFormElement;
+  
+  const lockScroll = () => document.documentElement.classList.add('modal-open');
+  const unlockScroll = () => document.documentElement.classList.remove('modal-open');
+
+  const closeAll = () => {
+    bookingModal?.classList.remove('active');
+    successPopup?.classList.remove('active');
+    unlockScroll();
+  };
+
+  const openBooking = () => {
+    // Reset any existing state
+    bookingModal?.classList.remove('active');
+    successPopup?.classList.remove('active');
+    
+    bookingModal?.classList.add('active');
+    lockScroll();
+  };
+
+  // Global window handle
+  (window as any).openBookingModal = openBooking;
+
+  // Manual close triggers
+  [
+    document.getElementById('close-modal'),
+    document.getElementById('cancel-modal'),
+    document.getElementById('close-success')
+  ].forEach(btn => btn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    closeAll();
+  }));
+
+  // Overlay click to close
+  [bookingModal, successPopup].forEach(modal => {
+    modal?.addEventListener('click', (e) => {
+      if (e.target === modal) closeAll();
+    });
+  });
+
+  // Universal Interceptor with exclusions for navigation
+  document.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement;
+    
+    // 1. Find the nearest meaningful "button" like element
+    const btn = target.closest('.btn, a, button, .diag-card, .eco-node');
+    if (!btn) return;
+
+    // 2. EXCLUDE if already inside a modal (prevents re-triggering)
+    if (btn.closest('.modal-container') || btn.closest('.success-container')) return;
+
+    // 3. EXCLUDE navigation links used for scrolling
+    if (btn.classList.contains('nav-link') || btn.closest('.nav') || btn.closest('.footer-col')) {
+      // Allow normal navigation/scroll behavior
+      return;
+    }
+
+    const href = btn.getAttribute('href');
+    
+    // 4. ACTION: If it's intended to be a Booking Trigger
+    // Matches dummy links (#), specific CTA buttons, or cards
+    const isDoctorPartner = btn.textContent?.includes('bác sĩ/đối tác'); // Catch specifically
+    const isBookingTarget = 
+      href === '#' || 
+      href === '#cta' || 
+      btn.classList.contains('btn') || 
+      btn.classList.contains('diag-cta-btn') || 
+      isDoctorPartner;
+
+    if (isBookingTarget) {
+      if (btn.tagName === 'A') e.preventDefault();
+      openBooking();
+    }
+  }, true); // Use capture to intercept before other handlers if needed
+
+  // Handle Form Submission
+  bookingForm?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const submitBtn = bookingForm.querySelector('button[type="submit"]') as HTMLButtonElement;
+    submitBtn.disabled = true;
+    const oldHtml = submitBtn.innerHTML;
+    submitBtn.innerHTML = 'Đang gửi yêu cầu...';
+
+    try {
+      const data = Object.fromEntries(new FormData(bookingForm).entries());
+      const res = await fetch('/api/booking', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+
+      if (res.ok) {
+        bookingModal?.classList.remove('active');
+        setTimeout(() => {
+          successPopup?.classList.add('active');
+          lockScroll();
+        }, 150);
+        bookingForm.reset();
+      } else {
+        alert('Có lỗi xảy ra. Vui lòng thử lại sau.');
+      }
+    } catch (err) {
+      alert('Không thể kết nối máy chủ.');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = oldHtml;
+    }
+  });
+</script>
