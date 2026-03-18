@@ -1,13 +1,17 @@
 ---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <section class="about" id="about">
   <div class="container">
     <div class="about-header text-center">
-      <div class="section-label mx-auto" style="justify-content: center;">VỀ CHÚNG TÔI</div>
-      <h2 class="section-heading">Meret Health là gì?</h2>
+      <div class="section-label mx-auto" style="justify-content: center;">{t('about.label')}</div>
+      <h2 class="section-heading">{t('about.title')}</h2>
       <p class="section-subheading mx-auto text-center">
-        Mô hình chăm sóc sức khỏe thế hệ mới, nơi dữ liệu cận lâm sàng được đặt ở trung tâm
+        {t('about.subtitle')}
       </p>
     </div>
 
@@ -20,11 +24,8 @@
             <circle cx="12" cy="12" r="3"></circle>
           </svg>
         </div>
-        <h3 class="about-card-title">Tầm nhìn</h3>
-        <p class="about-card-text">
-          Trở thành hệ sinh thái y tế dựa trên dữ liệu và AI <strong>đáng tin cậy tại Việt Nam</strong>, 
-          nơi mỗi người dân đều có một hồ sơ sức khỏe cá nhân hóa, được theo dõi và bảo vệ chủ động suốt cuộc đời.
-        </p>
+        <h3 class="about-card-title">{t('about.vision.title')}</h3>
+        <p class="about-card-text" set:html={t('about.vision.text')} />
       </div>
 
       <!-- Sứ mệnh -->
@@ -36,11 +37,11 @@
             <circle cx="12" cy="12" r="2"></circle>
           </svg>
         </div>
-        <h3 class="about-card-title">Sứ mệnh</h3>
+        <h3 class="about-card-title">{t('about.mission.title')}</h3>
         <ul class="about-list">
-          <li>Xây dựng trung tâm cận lâm sàng công nghệ cao làm "bộ não dữ liệu"</li>
-          <li>Kết nối chuỗi phòng khám đa khoa và bác sĩ gia đình</li>
-          <li>Ứng dụng AI để phát hiện sớm nguy cơ, dự phòng bệnh mạn và ung thư</li>
+          <li>{t('about.mission.li1')}</li>
+          <li>{t('about.mission.li2')}</li>
+          <li>{t('about.mission.li3')}</li>
         </ul>
       </div>
 
@@ -53,13 +54,13 @@
             <path d="M2 12l10 5 10-5"></path>
           </svg>
         </div>
-        <h3 class="about-card-title">Giá trị cốt lõi</h3>
+        <h3 class="about-card-title">{t('about.values.title')}</h3>
         <div class="about-tags">
-          <span class="tag tag-blue">Chính xác</span>
-          <span class="tag tag-gold">Cá thể</span>
-          <span class="tag tag-green">Dự phòng</span>
-          <span class="tag tag-purple">Kết nối</span>
-          <span class="tag tag-red">Nhân văn</span>
+          <span class="tag tag-blue">{t('about.values.accurate')}</span>
+          <span class="tag tag-gold">{t('about.values.personalized')}</span>
+          <span class="tag tag-green">{t('about.values.preventive')}</span>
+          <span class="tag tag-purple">{t('about.values.connected')}</span>
+          <span class="tag tag-red">{t('about.values.humanistic')}</span>
         </div>
       </div>
     </div>

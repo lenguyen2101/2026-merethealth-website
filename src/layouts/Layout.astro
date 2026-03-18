@@ -1,4 +1,6 @@
 ---
+import { getLangFromUrl } from '../i18n/utils';
+
 interface Props {
   title: string;
   description?: string;
@@ -8,10 +10,13 @@ const {
   title, 
   description = 'Meret Health – Hệ sinh thái chăm sóc sức khỏe cá thể hóa dựa trên dữ liệu và AI tại Việt Nam.' 
 } = Astro.props;
+
+const lang = getLangFromUrl(Astro.url);
+
 ---
 
 <!doctype html>
-<html lang="vi">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />

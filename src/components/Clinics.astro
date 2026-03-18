@@ -1,13 +1,17 @@
 ---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <section class="clinics" id="clinics">
   <div class="container">
     <div class="clinics-header text-center">
-      <div class="section-label mx-auto" style="justify-content: center;">PHÒNG KHÁM</div>
-      <h2 class="section-heading">Phòng khám Đa khoa Meret</h2>
+      <div class="section-label mx-auto" style="justify-content: center;">{t('clinics.label')}</div>
+      <h2 class="section-heading">{t('clinics.title')}</h2>
       <p class="section-subheading mx-auto text-center">
-        Chăm sóc hàng ngày, kết nối dữ liệu tức thời – Chuỗi phòng khám kết nối trực tiếp với Meret Precision Diagnostics
+        {t('clinics.subtitle')}
       </p>
     </div>
 
@@ -27,20 +31,20 @@
             </svg>
           </div>
           <div>
-            <h3 class="clinic-name">Meret General Clinic</h3>
-            <span class="clinic-sub">Phòng khám Đa khoa</span>
+            <h3 class="clinic-name">{t('clinics.general.title')}</h3>
+            <span class="clinic-sub">{t('clinics.general.sub')}</span>
           </div>
         </div>
 
         <div class="clinic-tags">
-          <span class="tag tag-teal">Nội khoa</span>
-          <span class="tag tag-teal">Ngoại khoa</span>
-          <span class="tag tag-teal">Nhi khoa</span>
-          <span class="tag tag-teal">Sản phụ khoa</span>
-          <span class="tag tag-teal">Tai mũi họng</span>
-          <span class="tag tag-teal">Mắt</span>
-          <span class="tag tag-teal">Da liễu</span>
-          <span class="tag tag-teal">Khám sức khỏe</span>
+          <span class="tag tag-teal">{t('clinics.general.tag1')}</span>
+          <span class="tag tag-teal">{t('clinics.general.tag2')}</span>
+          <span class="tag tag-teal">{t('clinics.general.tag3')}</span>
+          <span class="tag tag-teal">{t('clinics.general.tag4')}</span>
+          <span class="tag tag-teal">{t('clinics.general.tag5')}</span>
+          <span class="tag tag-teal">{t('clinics.general.tag6')}</span>
+          <span class="tag tag-teal">{t('clinics.general.tag7')}</span>
+          <span class="tag tag-teal">{t('clinics.general.tag8')}</span>
         </div>
 
         <div class="clinic-note">
@@ -48,10 +52,10 @@
             <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
             <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
           </svg>
-          <span>Kết nối trực tiếp với Meret Precision Diagnostics để chẩn đoán nhanh, chính xác và hành trình khám chữa bệnh gọn nhẹ.</span>
+          <span>{t('clinics.general.note')}</span>
         </div>
 
-        <a href="#" class="btn btn-gold btn-block">Đặt lịch khám đa khoa</a>
+        <a href="#" class="btn btn-gold btn-block">{t('clinics.general.btn')}</a>
       </div>
 
       <!-- Meret Family Doctor -->
@@ -66,26 +70,26 @@
             </svg>
           </div>
           <div>
-            <h3 class="clinic-name">Meret Family Doctor</h3>
-            <span class="clinic-sub" style="color: var(--gold);">Phòng khám Bác sĩ Gia đình</span>
+            <h3 class="clinic-name">{t('clinics.family.title')}</h3>
+            <span class="clinic-sub" style="color: var(--gold);">{t('clinics.family.sub')}</span>
           </div>
         </div>
 
         <ul class="clinic-features">
-          <li>Bác sĩ gia đình theo dõi sức khỏe liên tục cho cả gia đình</li>
-          <li>Hồ sơ sức khỏe cá thể hóa, cập nhật theo thời gian thực</li>
-          <li>Tư vấn dự phòng, lập kế hoạch sức khỏe dài hạn</li>
-          <li>Kết nối liền mạch với toàn hệ sinh thái Meret</li>
+          <li>{t('clinics.family.li1')}</li>
+          <li>{t('clinics.family.li2')}</li>
+          <li>{t('clinics.family.li3')}</li>
+          <li>{t('clinics.family.li4')}</li>
         </ul>
 
         <div class="clinic-quote">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
           </svg>
-          <em>Người bạn đồng hành sức khỏe suốt cuộc đời – hiểu bạn từ dữ liệu, chăm sóc bạn từ trái tim.</em>
+          <em>{t('clinics.family.quote')}</em>
         </div>
 
-        <a href="#" class="btn btn-gold btn-block">Đăng ký bác sĩ gia đình</a>
+        <a href="#" class="btn btn-gold btn-block">{t('clinics.family.btn')}</a>
       </div>
     </div>
   </div>

@@ -1,4 +1,9 @@
 ---
+import LanguagePicker from './LanguagePicker.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <header class="header" id="header">
@@ -21,15 +26,18 @@
     </a>
 
     <nav class="nav" id="nav">
-      <a href="#about" class="nav-link">Về chúng tôi</a>
-      <a href="#diagnostics" class="nav-link">Diagnostics</a>
-      <a href="#clinics" class="nav-link">Phòng khám</a>
-      <a href="#ecosystem" class="nav-link">Hệ sinh thái</a>
+      <a href="#about" class="nav-link">{t('nav.about')}</a>
+      <a href="#diagnostics" class="nav-link">{t('nav.diagnostics')}</a>
+      <a href="#clinics" class="nav-link">{t('nav.clinics')}</a>
+      <a href="#ecosystem" class="nav-link">{t('nav.ecosystem')}</a>
     </nav>
 
-    <a href="#cta" class="btn btn-gold header-cta">
-      Đặt lịch khám ngay
-    </a>
+    <div class="header-actions">
+      <LanguagePicker />
+      <a href="#cta" class="btn btn-gold header-cta">
+        {t('nav.book')}
+      </a>
+    </div>
 
     <button class="hamburger" id="hamburger" aria-label="Menu">
       <span></span>
@@ -109,6 +117,12 @@
 
   .nav-link:hover::after {
     width: 100%;
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
   }
 
   .header-cta {

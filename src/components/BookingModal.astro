@@ -1,14 +1,18 @@
 ---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <div id="booking-modal" class="modal-overlay">
   <div class="modal-container">
     <div class="modal-header">
       <div class="header-text">
-        <h2 class="modal-title">Đặt lịch khám</h2>
-        <p class="modal-subtitle">Vui lòng điền thông tin để được tư vấn</p>
+        <h2 class="modal-title">{t('modal.title')}</h2>
+        <p class="modal-subtitle">{t('modal.subtitle')}</p>
       </div>
-      <button id="close-modal" class="close-btn" aria-label="Đóng">
+      <button id="close-modal" class="close-btn" aria-label={t('modal.btn.close')}>
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <line x1="18" y1="6" x2="6" y2="18"></line>
           <line x1="6" y1="6" x2="18" y2="18"></line>
@@ -17,43 +21,43 @@
       </button>
     </div>
 
-    <form id="booking-form" class="modal-body">
+    <form id="booking-form" class="modal-body" data-sending={t('modal.sending')}>
       <div class="form-group">
-        <label for="full-name">Họ và tên *</label>
-        <input type="text" id="full-name" name="fullName" placeholder="Nguyễn Văn A" required />
+        <label for="full-name">{t('modal.label.name')}</label>
+        <input type="text" id="full-name" name="fullName" placeholder={t('modal.placeholder.name')} required />
       </div>
 
       <div class="form-group">
-        <label for="phone">Số điện thoại *</label>
-        <input type="tel" id="phone" name="phone" placeholder="0912 345 678" required />
+        <label for="phone">{t('modal.label.phone')}</label>
+        <input type="tel" id="phone" name="phone" placeholder={t('modal.placeholder.phone')} required />
       </div>
 
       <div class="form-group">
-        <label for="service">Dịch vụ quan tâm</label>
+        <label for="service">{t('modal.label.service')}</label>
         <select id="service" name="service">
-          <option value="" disabled selected>-- Chọn dịch vụ --</option>
-          <option value="xet-nghiem">Xét nghiệm chuyên sâu</option>
-          <option value="chan-doan-ai">Chẩn đoán hình ảnh AI</option>
-          <option value="benh-man">Gói tầm soát bệnh mạn</option>
-          <option value="ung-thu-som">Gói tầm soát ung thư sớm</option>
-          <option value="kham-da-khoa">Khám đa khoa</option>
-          <option value="bac-si-gia-dinh">Bác sĩ gia đình</option>
+          <option value="" disabled selected>{t('modal.service.default')}</option>
+          <option value="xet-nghiem">{t('modal.service.testing')}</option>
+          <option value="chan-doan-ai">{t('modal.service.ai')}</option>
+          <option value="benh-man">{t('modal.service.chronic')}</option>
+          <option value="ung-thu-som">{t('modal.service.cancer')}</option>
+          <option value="kham-da-khoa">{t('modal.service.general')}</option>
+          <option value="bac-si-gia-dinh">{t('modal.service.family')}</option>
         </select>
       </div>
 
       <div class="form-group">
-        <label for="notes">Ghi chú</label>
-        <textarea id="notes" name="notes" placeholder="Triệu chứng hoặc yêu cầu đặc biệt..." rows="3"></textarea>
+        <label for="notes">{t('modal.label.notes')}</label>
+        <textarea id="notes" name="notes" placeholder={t('modal.placeholder.notes')} rows="3"></textarea>
       </div>
 
       <div class="form-actions">
-        <button type="button" id="cancel-modal" class="btn btn-cancel">Hủy</button>
+        <button type="button" id="cancel-modal" class="btn btn-cancel">{t('modal.btn.cancel')}</button>
         <button type="submit" id="submit-booking" class="btn btn-gold btn-submit">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <line x1="22" y1="2" x2="11" y2="13"></line>
             <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
           </svg>
-          Gửi yêu cầu đặt lịch
+          {t('modal.btn.submit')}
         </button>
       </div>
     </form>
@@ -69,9 +73,9 @@
         <polyline points="22 4 12 14.01 9 11.01"></polyline>
       </svg>
     </div>
-    <h3 class="success-title">Gửi thông tin thành công!</h3>
-    <p class="success-text">Chúng tôi sẽ liên hệ với bạn trong thời gian sớm nhất.</p>
-    <button id="close-success" class="btn btn-gold btn-submit" style="width: 100%;">Đóng</button>
+    <h3 class="success-title">{t('modal.success.title')}</h3>
+    <p class="success-text">{t('modal.success.text')}</p>
+    <button id="close-success" class="btn btn-gold btn-submit" style="width: 100%;">{t('modal.btn.close')}</button>
   </div>
 </div>
 
@@ -361,7 +365,7 @@
     const submitBtn = bookingForm.querySelector('button[type="submit"]') as HTMLButtonElement;
     submitBtn.disabled = true;
     const oldHtml = submitBtn.innerHTML;
-    submitBtn.innerHTML = 'Đang gửi yêu cầu...';
+    submitBtn.innerHTML = bookingForm.dataset.sending || 'Sending...';
 
     try {
       const data = Object.fromEntries(new FormData(bookingForm).entries());

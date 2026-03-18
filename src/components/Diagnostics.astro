@@ -1,13 +1,17 @@
 ---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <section class="diagnostics" id="diagnostics">
   <div class="container">
     <div class="diagnostics-header text-center">
-      <div class="section-label mx-auto" style="justify-content: center; color: var(--gold);">CÔNG NGHỆ CAO</div>
-      <h2 class="section-heading" style="color: var(--white);">Meret Precision Diagnostics</h2>
+      <div class="section-label mx-auto" style="justify-content: center; color: var(--gold);">{t('diag.label')}</div>
+      <h2 class="section-heading" style="color: var(--white);">{t('nav.diagnostics')}</h2>
       <p class="section-subheading mx-auto text-center" style="color: var(--text-light);">
-        Bộ não dữ liệu của hệ sinh thái – Trung tâm cận lâm sàng công nghệ cao
+        {t('diag.subtitle')}
       </p>
     </div>
 
@@ -23,10 +27,9 @@
             <polyline points="10 9 9 9 8 9"></polyline>
           </svg>
         </div>
-        <h3 class="diag-card-title">Xét nghiệm chuyên sâu</h3>
+        <h3 class="diag-card-title">{t('diag.card1.title')}</h3>
         <p class="diag-card-text">
-          Huyết học, sinh hóa, miễn dịch, nội tiết, vi sinh, marker ung thư, di truyền – 
-          các panel xét nghiệm toàn diện cho tim mạch, chuyển hóa, tự miễn.
+          {t('diag.card1.text')}
         </p>
       </div>
 
@@ -39,10 +42,9 @@
             <line x1="12" y1="17" x2="12" y2="21"></line>
           </svg>
         </div>
-        <h3 class="diag-card-title">Chẩn đoán hình ảnh AI</h3>
+        <h3 class="diag-card-title">{t('diag.card2.title')}</h3>
         <p class="diag-card-text">
-          X-quang số, siêu âm, CT, MRI tích hợp thuật toán AI hỗ trợ phát hiện bất thường, 
-          nâng cao độ chính xác và rút ngắn thời gian đọc kết quả.
+          {t('diag.card2.text')}
         </p>
       </div>
 
@@ -53,10 +55,9 @@
             <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
           </svg>
         </div>
-        <h3 class="diag-card-title">Sàng lọc bệnh mạn & ung thư sớm</h3>
+        <h3 class="diag-card-title">{t('diag.card3.title')}</h3>
         <p class="diag-card-text">
-          Tăng huyết áp, đái tháo đường, bệnh mạch vành, rối loạn mỡ máu, thận mạn. 
-          Tầm soát ung thư cổ tử cung, vú, gan, đại trực tràng, phổi ở giai đoạn sớm.
+          {t('diag.card3.text')}
         </p>
       </div>
 
@@ -69,10 +70,9 @@
             <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
           </svg>
         </div>
-        <h3 class="diag-card-title">"Bộ não dữ liệu" hệ sinh thái</h3>
+        <h3 class="diag-card-title">{t('diag.card4.title')}</h3>
         <p class="diag-card-text">
-          Chuẩn hóa và tích hợp dữ liệu toàn hệ thống. Báo cáo chuẩn, dễ đọc cho bác sĩ đối tác. 
-          Lưu trữ và so sánh kết quả theo thời gian cho từng cá nhân.
+          {t('diag.card4.text')}
         </p>
       </div>
     </div>
@@ -80,11 +80,11 @@
     <!-- CTA Banner -->
     <div class="diag-cta-banner">
       <div class="diag-cta-content">
-        <h3 class="diag-cta-title">Các gói tầm soát của Meret</h3>
-        <p class="diag-cta-list">Cơ bản · Tim mạch · Chuyển hóa · Ung thư sớm · Toàn diện VIP</p>
+        <h3 class="diag-cta-title">{t('diag.banner.title')}</h3>
+        <p class="diag-cta-list">{t('diag.banner.list')}</p>
       </div>
       <a href="#" class="btn btn-outline-dark diag-cta-btn" style="border-color: var(--navy-dark); color: var(--navy-dark);">
-        Xem chi tiết gói
+        {t('diag.banner.btn')}
       </a>
     </div>
   </div>

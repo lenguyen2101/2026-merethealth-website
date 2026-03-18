@@ -1,4 +1,8 @@
 ---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <footer class="footer">
@@ -44,35 +48,34 @@
           </span>
         </a>
         <p class="footer-tagline">
-          Hệ sinh thái chăm sóc sức khỏe cá thể hóa dựa trên dữ liệu và AI tại
-          Việt Nam.
+          {t('footer.tagline')}
         </p>
       </div>
 
       <!-- Dịch vụ column -->
       <div class="footer-col">
-        <h4 class="footer-col-title">DỊCH VỤ</h4>
+        <h4 class="footer-col-title">{t('footer.col.services')}</h4>
         <ul class="footer-links">
-          <li><a href="#diagnostics">Xét nghiệm chuyên sâu</a></li>
-          <li><a href="#diagnostics">Chẩn đoán hình ảnh AI</a></li>
-          <li><a href="#clinics">Phòng khám Đa khoa</a></li>
-          <li><a href="#clinics">Bác sĩ Gia đình</a></li>
+          <li><a href="#diagnostics">{t('footer.link.testing')}</a></li>
+          <li><a href="#diagnostics">{t('footer.link.imaging')}</a></li>
+          <li><a href="#clinics">{t('footer.link.clinics')}</a></li>
+          <li><a href="#clinics">{t('footer.link.doctors')}</a></li>
         </ul>
       </div>
 
       <!-- Công ty column -->
       <div class="footer-col">
-        <h4 class="footer-col-title">CÔNG TY</h4>
+        <h4 class="footer-col-title">{t('footer.col.company')}</h4>
         <ul class="footer-links">
-          <li><a href="#about">Về chúng tôi</a></li>
-          <li><a href="#ecosystem">Hệ sinh thái</a></li>
-          <li><a href="#cta">Liên hệ</a></li>
+          <li><a href="#about">{t('footer.link.about')}</a></li>
+          <li><a href="#ecosystem">{t('footer.link.ecosystem')}</a></li>
+          <li><a href="#cta">{t('footer.link.contact')}</a></li>
         </ul>
       </div>
 
       <!-- Liên hệ column -->
       <div class="footer-col">
-        <h4 class="footer-col-title">LIÊN HỆ</h4>
+        <h4 class="footer-col-title">{t('footer.col.contact')}</h4>
         <ul class="footer-contact">
           <li>
             <svg
@@ -88,7 +91,7 @@
               <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
               <circle cx="12" cy="10" r="3"></circle>
             </svg>
-            <span>TPHCM, Việt Nam</span>
+            <span>{t('footer.address')}</span>
           </li>
           <li>
             <svg

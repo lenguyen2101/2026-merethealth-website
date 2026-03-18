@@ -1,0 +1,112 @@
+---
+import { getLangFromUrl } from '../i18n/utils';
+import { languages } from '../i18n/ui';
+
+const url = Astro.url;
+const currentLang = getLangFromUrl(url);
+
+// Function to get the current path without the lang prefix if it's not the default
+function getPathWithoutLang(pathname: string) {
+  const segments = pathname.split('/');
+  // If the first segment (excluding '') is one of our locales, remove it
+  if (Object.keys(languages).includes(segments[1])) {
+    return '/' + segments.slice(2).join('/');
+  }
+  return pathname;
+}
+
+const basePath = getPathWithoutLang(url.pathname);
+---
+
+<div class="lang-picker">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="globe-icon">
+    <circle cx="12" cy="12" r="10"></circle>
+    <line x1="2" y1="12" x2="22" y2="12"></line>
+    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+  </svg>
+  
+  <div class="lang-links">
+    <a href={basePath} class:list={['lang-link', { active: currentLang === 'vi' }]}>
+      VI
+    </a>
+    <span class="divider"></span>
+    <a href={`/en${basePath === '/' ? '' : basePath}`} class:list={['lang-link', { active: currentLang === 'en' }]}>
+      EN
+    </a>
+  </div>
+</div>
+
+<style>
+  .lang-picker {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(15, 42, 61, 0.4); /* Dark transparency */
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    padding: 8px 16px;
+    color: var(--white);
+    transition: all var(--transition-normal);
+  }
+
+  /* Responsive adjustment: when in header on white background, might need different styling */
+  :global(.header-inner) .lang-picker {
+    background: rgba(15, 42, 61, 0.05);
+    border-color: rgba(15, 42, 61, 0.1);
+    color: var(--navy-dark);
+    margin-right: 12px;
+  }
+
+  /* Dark background context (like Hero or dark header) */
+  :global(.header.scrolled) .lang-picker,
+  :global(.hero) .lang-picker {
+    background: rgba(15, 42, 61, 0.4);
+    border-color: rgba(255, 255, 255, 0.1);
+    color: var(--white);
+  }
+
+  .globe-icon {
+    opacity: 0.7;
+    width: 16px;
+    height: 16px;
+  }
+
+  .lang-links {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .lang-link {
+    text-decoration: none;
+    color: inherit;
+    opacity: 0.5;
+    transition: all var(--transition-fast);
+  }
+
+  .lang-link:hover {
+    opacity: 1;
+  }
+
+  .lang-link.active {
+    opacity: 1;
+    color: #64b5f6; /* Blueish color as in image */
+  }
+
+  .divider {
+    width: 1px;
+    height: 14px;
+    background: currentColor;
+    opacity: 0.2;
+  }
+
+  @media (max-width: 768px) {
+    .lang-picker {
+      padding: 6px 12px;
+      gap: 8px;
+    }
+  }
+</style>

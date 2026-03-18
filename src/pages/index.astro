@@ -10,9 +10,13 @@ import Ecosystem from '../components/Ecosystem.astro';
 import CTA from '../components/CTA.astro';
 import Footer from '../components/Footer.astro';
 import BookingModal from '../components/BookingModal.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
-<Layout title="Meret Health – Hệ sinh thái chăm sóc sức khỏe cá thể hóa dựa trên dữ liệu">
+<Layout title={t('hero.title')}>
   <Header />
   <main>
     <Hero />

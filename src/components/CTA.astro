@@ -1,14 +1,18 @@
 ---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <section class="cta-section" id="cta">
   <div class="cta-gradient-overlay"></div>
   <div class="container cta-container">
     <h2 class="cta-heading">
-      <em>Bắt đầu hành trình sức khỏe của bạn</em>
+      <em>{t('cta.title')}</em>
     </h2>
     <p class="cta-subtext">
-      Đặt lịch khám hoặc tìm hiểu gói tầm soát phù hợp với bạn và gia đình ngay hôm nay.
+      {t('cta.description')}
     </p>
     <div class="cta-actions">
       <a href="#" class="btn btn-gold">
@@ -18,10 +22,10 @@
           <line x1="8" y1="2" x2="8" y2="6"></line>
           <line x1="3" y1="10" x2="21" y2="10"></line>
         </svg>
-        Đặt lịch khám ngay
+        {t('nav.book')}
       </a>
       <a href="#diagnostics" class="btn btn-outline-white">
-        Xem gói tầm soát
+        {t('hero.cta.screening')}
       </a>
     </div>
   </div>

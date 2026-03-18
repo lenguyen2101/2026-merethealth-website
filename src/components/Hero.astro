@@ -1,4 +1,8 @@
 ---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <section class="hero" id="hero">
@@ -9,19 +13,15 @@
     <div class="hero-text">
       <div class="hero-label">
         <span class="hero-label-dot"></span>
-        DATA-DRIVEN HEALTHCARE ECOSYSTEM
+        {t('hero.label')}
       </div>
 
       <h1 class="hero-heading">
-        Meret Health – Hệ sinh thái chăm sóc sức khỏe cá thể hóa dựa trên dữ
-        liệu
+        {t('hero.title')}
       </h1>
 
       <p class="hero-description">
-        Từ xét nghiệm chuyên sâu, chẩn đoán hình ảnh ứng dụng AI cho đến phòng
-        khám đa khoa và bác sĩ gia đình – Meret Health đồng hành cùng bạn trên
-        toàn bộ hành trình khỏe mạnh, dự phòng bệnh mạn và ung thư giai đoạn
-        sớm.
+        {t('hero.description')}
       </p>
 
       <div class="hero-actions">
@@ -41,7 +41,7 @@
             <line x1="8" y1="2" x2="8" y2="6"></line>
             <line x1="3" y1="10" x2="21" y2="10"></line>
           </svg>
-          Đặt lịch khám ngay
+          {t('hero.cta.book')}
         </a>
         <a href="#diagnostics" class="btn btn-outline-white">
           <svg
@@ -57,7 +57,7 @@
             <circle cx="11" cy="11" r="8"></circle>
             <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
           </svg>
-          Xem gói tầm soát
+          {t('hero.cta.screening')}
         </a>
         <a href="#" class="btn btn-outline-white">
           <svg
@@ -76,7 +76,7 @@
             <path d="M12 15v5"></path>
             <circle cx="12" cy="21" r="1"></circle>
           </svg>
-          Dành cho bác sĩ/đối tác
+          {t('hero.cta.partners')}
         </a>
       </div>
     </div>
@@ -87,8 +87,8 @@
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
         </div>
         <div class="feature-info">
-          <span class="feature-value">AI-Powered</span>
-          <span class="feature-label">Chẩn đoán hình ảnh</span>
+          <span class="feature-value">{t('hero.feature.ai.value')}</span>
+          <span class="feature-label">{t('hero.feature.ai.label')}</span>
         </div>
       </div>
 
@@ -97,8 +97,8 @@
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
         </div>
         <div class="feature-info">
-          <span class="feature-value">360°</span>
-          <span class="feature-label">Hồ sơ sức khỏe</span>
+          <span class="feature-value">{t('hero.feature.profile.value')}</span>
+          <span class="feature-label">{t('hero.feature.profile.label')}</span>
         </div>
       </div>
 
@@ -107,8 +107,8 @@
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
         </div>
         <div class="feature-info">
-          <span class="feature-value">Early</span>
-          <span class="feature-label">Phát hiện sớm</span>
+          <span class="feature-value">{t('hero.feature.detection.value')}</span>
+          <span class="feature-label">{t('hero.feature.detection.label')}</span>
         </div>
       </div>
 
@@ -117,8 +117,8 @@
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         </div>
         <div class="feature-info">
-          <span class="feature-value">24/7</span>
-          <span class="feature-label">Theo dõi sức khỏe</span>
+          <span class="feature-value">{t('hero.feature.tracking.value')}</span>
+          <span class="feature-label">{t('hero.feature.tracking.label')}</span>
         </div>
       </div>
     </div>
